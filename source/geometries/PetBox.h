@@ -23,6 +23,8 @@ class TileFBK;
 namespace nexus
 {
 class SpherePointSampler;
+
+class BoxPointSampler;
 }
 
 using namespace nexus;
@@ -92,6 +94,9 @@ private:
   G4bool add_teflon_block_;
 
   G4double max_step_size_;
+
+  // Vertex generators
+  BoxPointSampler* teflon_hole_gen_;
 
   /// Messenger for the definition of control commands
   G4GenericMessenger* msg_;

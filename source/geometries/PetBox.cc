@@ -20,6 +20,7 @@
 #include "nexus/MaterialsList.h"
 #include "nexus/OpticalMaterialProperties.h"
 #include "nexus/SpherePointSampler.h"
+#include "nexus/BoxPointSampler.h"
 
 #include <G4GenericMessenger.hh>
 #include <G4LogicalVolume.hh>
@@ -132,6 +133,16 @@ void PetBox::Construct()
 
   BuildBox();
   BuildSensors();
+
+  // Creating the vertex generators   //////////
+  G4double sel_hole_size_x = 5.75 *mm;
+  G4double sel_hole_size_y = 5.75 *mm;
+  G4double sel_hole_size_z = 5.50 *mm;
+  G4double center_hole_x   = -4.485 * mm;
+  G4double center_hole_y   = 4.425 * mm;
+  G4double center_hole_z   = -53.5 * mm;
+  teflon_hole_gen_  = new BoxPointSampler(sel_hole_size_x, sel_hole_size_y, sel_hole_size_z, 0,
+                                   G4ThreeVector(center_hole_x, center_hole_y, center_hole_z), 0);
 }
 
 void PetBox::BuildBox()
@@ -727,6 +738,10 @@ G4ThreeVector PetBox::GenerateVertex(const G4String &region) const
   else if (region == "SOURCE")
     {
       vertex = source_gen_->GenerateVertex("VOLUME");
+    }
+  else if (region == "TEFLON_HOLE")
+    {
+      vertex = teflon_hole_gen_->GenerateVertex("INSIDE");
     }
   else
     {
