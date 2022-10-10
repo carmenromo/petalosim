@@ -1,0 +1,31 @@
+
+### GEOMETRY
+/Geometry/PetBox/visibility true
+/Geometry/PetBox/tile_type_d HamamatsuVUV
+/Geometry/PetBox/tile_type_c HamamatsuVUV
+/Geometry/PetBox/single_tile_coinc_plane 0
+/Geometry/PetBox/add_teflon_block 1
+
+/Geometry/PetBox/tile_refl 0.
+/Geometry/PetBox/sipm_time_binning 5 picosecond
+
+### GENERATOR
+/Generator/LXeScintGenerator/region TEFLON_HOLE
+/Generator/LXeScintGenerator/nphotons 30000
+
+### PHYSICS
+/process/optical/processActivation Scintillation true
+/process/optical/processActivation Cerenkov      true
+
+### VERBOSITIES
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
+/process/em/verbose 0
+
+/nexus/random_seed 873680
+
+### OUTPUT FILE
+/nexus/persistency/start_id 0
+/nexus/persistency/outputFile petbox_opt.pet
+/nexus/persistency/tof_time 5. nanosecond
