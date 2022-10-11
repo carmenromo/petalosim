@@ -15,8 +15,9 @@
 
 ### ACTIONS
 /nexus/RegisterRunAction DefaultRunAction
-/nexus/RegisterEventAction SaveAllEventAction
+#/nexus/RegisterEventAction SaveAllEventAction
 /nexus/RegisterTrackingAction PetaloTrackingAction
+#OpticalTrackingAction
 
 /nexus/RegisterPersistencyManager PetaloPersistencyManager
 
