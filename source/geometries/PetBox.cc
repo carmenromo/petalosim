@@ -137,10 +137,14 @@ void PetBox::Construct()
   // Creating the vertex generators   //////////
   G4double sel_hole_size_x = 5.75 *mm;
   G4double sel_hole_size_y = 5.75 *mm;
-  G4double sel_hole_size_z = 5.50 *mm;
+  //G4double sel_hole_size_z = 5.50 *mm;
+  //G4double sel_hole_size_z = 30.50 *mm;
+  G4double sel_hole_size_z = 0.5 *mm;
   G4double center_hole_x   = -4.485 * mm;
   G4double center_hole_y   = 4.425 * mm;
-  G4double center_hole_z   = -53.5 * mm;
+  //G4double center_hole_z   = -53.5 * mm;
+  //G4double center_hole_z   = -41 * mm;
+  G4double center_hole_z   = -56. * mm;
   teflon_hole_gen_  = new BoxPointSampler(sel_hole_size_x, sel_hole_size_y, sel_hole_size_z, 0,
                                    G4ThreeVector(center_hole_x, center_hole_y, center_hole_z), 0);
 }
@@ -523,7 +527,8 @@ void PetBox::BuildBox()
     G4double teflon_central_offset_y = 3.11 * mm;
 
     G4double teflon_holes_xy    = 5.75 * mm;
-    G4double teflon_holes_depth = 5    * mm;
+    //G4double teflon_holes_depth = 5    * mm;
+    G4double teflon_holes_depth = 30  * mm;
 
     G4double dist_between_holes_xy = 1.75 * mm;
 
