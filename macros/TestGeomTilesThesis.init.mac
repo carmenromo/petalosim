@@ -7,20 +7,16 @@
 /PhysicsList/RegisterPhysics G4StepLimiterPhysics
 
 ### GEOMETRY
-/nexus/RegisterGeometry PetBox
+/nexus/RegisterGeometry TestGeomTilesThesis
 
 ### GENERATOR
-/nexus/RegisterGenerator IonGenerator
-#LXeScintillationGenerator
-#/nexus/RegisterGenerator SingleParticleGenerator
+/nexus/RegisterGenerator SingleParticleGenerator
 
 ### ACTIONS
 /nexus/RegisterRunAction DefaultRunAction
-#/nexus/RegisterEventAction SaveAllEventAction
-/nexus/RegisterTrackingAction OpticalTrackingAction
-#PetaloTrackingAction
-#OpticalTrackingAction
+/nexus/RegisterEventAction PetSensorsEventAction
+/nexus/RegisterTrackingAction PetaloTrackingAction
 
 /nexus/RegisterPersistencyManager PetaloPersistencyManager
 
-/nexus/RegisterMacro macros/PetBox_opt.config.mac
+/nexus/RegisterMacro macros/TestGeomTilesThesis.config.mac

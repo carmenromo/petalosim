@@ -10,8 +10,11 @@
 /Geometry/PetBox/sipm_time_binning 5 picosecond
 
 ### GENERATOR
-/Generator/LXeScintGenerator/region TEFLON_HOLE
-/Generator/LXeScintGenerator/nphotons 30000
+/Generator/IonGenerator/region SOURCE
+/Generator/IonGenerator/atomic_number 11
+/Generator/IonGenerator/mass_number 22
+#/Generator/LXeScintGenerator/region TEFLON_HOLE
+#/Generator/LXeScintGenerator/nphotons 30000
 
 ### PHYSICS
 /process/optical/processActivation Scintillation true
@@ -23,9 +26,9 @@
 /tracking/verbose 0
 /process/em/verbose 0
 
-/nexus/random_seed 873680
+/nexus/random_seed 873749
 
 ### OUTPUT FILE
-/nexus/persistency/start_id 0
-/nexus/persistency/outputFile petbox_opt.pet
+/nexus/persistency/start_id 900
+/nexus/persistency/outputFile petbox_refl98_opt_900.pet
 /nexus/persistency/tof_time 5. nanosecond
