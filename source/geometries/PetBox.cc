@@ -512,10 +512,10 @@ void PetBox::BuildBox()
     G4double teflon_central_offset_x = 3.23 * mm;
     G4double teflon_central_offset_y = 3.11 * mm;
 
-    G4double teflon_holes_xy    = 5.75 * mm;
-    G4double teflon_holes_depth = 5    * mm;
-
     G4double dist_between_holes_xy = 1.75 * mm;
+
+    G4double teflon_holes_xy    = 5.75*2 * mm + dist_between_holes_xy;
+    G4double teflon_holes_depth = 30    * mm;
 
     G4Box *teflon_block_solid =
       new G4Box("TEFLON_BLOCK", teflon_block_xy/2., teflon_block_xy/2., teflon_block_thick/2.);
@@ -529,7 +529,7 @@ void PetBox::BuildBox()
        new G4LogicalVolume(teflon_block_solid, teflon, "TEFLON_BLOCK");
 
     // Holes in the block which are filled with LXe and defined as LXe vols
-    G4double dist_four_holes = 4* teflon_holes_xy + 3*dist_between_holes_xy;
+    G4double dist_four_holes_xy = 2* teflon_holes_xy + dist_between_holes_xy;
 
     G4Box *teflon_hole_solid =
       new G4Box("ACTIVE", teflon_holes_xy/2., teflon_holes_xy/2., teflon_holes_depth/2.);
@@ -546,16 +546,16 @@ void PetBox::BuildBox()
     G4int copy_no = 0;
 
     for (G4int j = 0; j < 2; j++){ // Loop over the tiles in row
-      G4double set_holes_y = teflon_block_xy/2. - teflon_offset_y - dist_four_holes/2.
-                             - j*(teflon_central_offset_y + dist_four_holes);
+      G4double set_holes_y = teflon_block_xy/2. - teflon_offset_y - dist_four_holes_xy/2.
+                             - j*(teflon_central_offset_y + dist_four_holes_xy);
       for (G4int i = 0; i < 2; i++){ // Loop over the tiles in column
-        G4double set_holes_x = -teflon_block_xy/2. + teflon_offset_x + dist_four_holes/2.
-                               + i*(teflon_central_offset_x + dist_four_holes);
-        for (G4int l = 0; l < 4; l++){ // Loop over the sensors in row
-          G4double holes_pos_y = set_holes_y + 3*(teflon_holes_xy/2. + dist_between_holes_xy/2.)
+        G4double set_holes_x = -teflon_block_xy/2. + teflon_offset_x + dist_four_holes_xy/2.
+                               + i*(teflon_central_offset_x + dist_four_holes_xy);
+        for (G4int l = 0; l < 2; l++){ // Loop over every 2 sensors in row
+          G4double holes_pos_y = set_holes_y + (teflon_holes_xy/2. + dist_between_holes_xy/2.)
                                 - l*(teflon_holes_xy + dist_between_holes_xy);
-          for (G4int k = 0; k < 4; k++){ // Loop over the sensors in column
-            G4double holes_pos_x = set_holes_x - 3*(teflon_holes_xy/2. + dist_between_holes_xy/2.)
+          for (G4int k = 0; k < 2; k++){ // Loop over every 2 sensors in column
+            G4double holes_pos_x = set_holes_x - (teflon_holes_xy/2. + dist_between_holes_xy/2.)
                                     + k*(teflon_holes_xy + dist_between_holes_xy);
 
             new G4PVPlacement(0, G4ThreeVector(holes_pos_x, holes_pos_y, holes_pos_z), teflon_hole_logic,
