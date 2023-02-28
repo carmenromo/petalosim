@@ -515,7 +515,7 @@ void PetBox::BuildBox()
     G4double teflon_holes_xy      = 5.75 * mm;
     G4double dist_between_holes_xy = 1.75 * mm;
 
-    G4double teflon_holes_true_xy = 3*teflon_holes_xy + 2*dist_between_holes_xy;
+    G4double teflon_holes_true_xy = 6*teflon_holes_xy + 5*dist_between_holes_xy;
     G4double teflon_holes_depth = 30    * mm;
 
     G4Box *teflon_block_solid =
@@ -546,12 +546,12 @@ void PetBox::BuildBox()
 
     G4int copy_no = 0;
 
-    for (G4int j = 0; j < 2; j++){ // Loop over the tiles in row
-      G4double set_holes_y = teflon_block_xy/2. - teflon_offset_y - dist_four_holes/2.
-                             - j*(teflon_central_offset_y + dist_four_holes);
-      for (G4int i = 0; i < 2; i++){ // Loop over the tiles in column
-        G4double set_holes_x = -teflon_block_xy/2. + teflon_offset_x + dist_four_holes/2.
-                               + i*(teflon_central_offset_x + dist_four_holes);
+    //for (G4int j = 0; j < 2; j++){ // Loop over the tiles in row
+      G4double set_holes_y = teflon_block_xy/2. - teflon_offset_y - dist_four_holes/2.;
+                              //- j*(teflon_central_offset_y + dist_four_holes);
+      //for (G4int i = 0; i < 2; i++){ // Loop over the tiles in column
+      G4double set_holes_x = -teflon_block_xy/2. + teflon_offset_x + dist_four_holes/2.;
+                               //+ i*(teflon_central_offset_x + dist_four_holes);
         // for (G4int l = 0; l < 4; l++){ // Loop over the sensors in row
         G4double holes_pos_y = set_holes_y + 2*(teflon_holes_xy + dist_between_holes_xy)
           -teflon_holes_true_xy/2. - dist_between_holes_xy/2;
@@ -564,8 +564,8 @@ void PetBox::BuildBox()
         copy_no += 1;
         //}
         //}
-      }
-    }
+      //}
+    //}
 
     new G4PVPlacement(0, G4ThreeVector(0., 0., -block_z_pos), teflon_block_logic,
                       "TEFLON_BLOCK", active_logic_, false, 0, false);
