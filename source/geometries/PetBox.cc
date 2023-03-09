@@ -515,8 +515,8 @@ void PetBox::BuildBox()
     G4double teflon_holes_xy      = 5.75 * mm;
     G4double dist_between_holes_xy = 1.75 * mm;
 
-    G4double teflon_holes_true_x = 6*teflon_holes_xy + 4*dist_between_holes_xy + teflon_central_offset_x;
-    G4double teflon_holes_true_y = 6*teflon_holes_xy + 4*dist_between_holes_xy + teflon_central_offset_y;
+    G4double teflon_holes_true_x = 8*teflon_holes_xy + 6*dist_between_holes_xy + teflon_central_offset_x;
+    G4double teflon_holes_true_y = 8*teflon_holes_xy + 6*dist_between_holes_xy + teflon_central_offset_y;
     G4double teflon_holes_depth = 30    * mm;
 
     G4Box *teflon_block_solid =
